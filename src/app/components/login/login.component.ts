@@ -22,7 +22,7 @@ export class LoginComponent {
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
         console.log('Login successful', response);
-        this.router.navigate(['/home/register']);
+        this.router.navigate(['/user']);
       },
       error: (err) => {
         console.error('Login failed', err);

@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <div *ngIf="fitnessClasses.length" class="row">
+    <div *ngFor="let fitnessClass of fitnessClasses" class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ fitnessClass.className }}</h5>
+          <p class="card-text">
+            <strong>Day:</strong> {{ fitnessClass.dayOfWeek }}<br>
+            <strong>Time:</strong> {{ fitnessClass.startTime }} - {{ fitnessClass.endTime }}<br>
+            <strong>Trainer ID:</strong> {{ fitnessClass.personalTrainerId }}<br>
+            <strong>Max Users:</strong> {{ fitnessClass.maxUsers }}
+          </p>
+        </div>
+        <div class="card-footer text-muted">
+          Class ID: {{ fitnessClass.id }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!fitnessClasses.length" class="alert alert-info" role="alert">
+    No classes available
+  </div>
+</div>
