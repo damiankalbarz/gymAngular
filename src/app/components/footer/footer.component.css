@@ -1,0 +1,18 @@
+/* src/app/components/footer/footer.component.css */
+.contact-info {
+  background-color: #f7f7f7;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+
+.contact-info h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  font-size: 1.1em;
+  margin: 5px 0;
+}
