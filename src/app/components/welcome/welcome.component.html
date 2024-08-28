@@ -1,0 +1,32 @@
+<div class="app-container">
+  <h1>Witamy na naszej siłowni!</h1>
+
+  <!-- Sekcja O nas -->
+  <section class="about-us">
+    <h2>O nas</h2>
+    <p>
+      Nasza siłownia to miejsce, gdzie każdy znajdzie coś dla siebie. Oferujemy nowoczesne
+      wyposażenie, doświadczonych trenerów oraz szeroki wybór zajęć fitness. Niezależnie od tego,
+      czy jesteś początkującym, czy doświadczonym sportowcem, pomożemy Ci osiągnąć Twoje cele.
+    </p>
+  </section>
+
+  <div class="membership-container">
+    <h2>Cennik karnetów</h2>
+    <ul>
+      <li *ngFor="let pass of membershipPasses">
+        <strong>{{ pass.length }} dni:</strong> {{ pass.price | currency:'PLN' }}
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- Sekcja Kontakt -->
+  <footer class="contact-info">
+    <h2>Kontakt</h2>
+    <p><strong>Adres:</strong> ul. Sportowa 12, 00-123 Warszawa</p>
+    <p><strong>Telefon:</strong> +48 123 456 789</p>
+    <p><strong>Email:</strong> kontaktsilownia.pl</p>
+  </footer>
+</div>
+

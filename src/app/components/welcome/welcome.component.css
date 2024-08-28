@@ -1,0 +1,63 @@
+/* src/app/app.component.css */
+.app-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+  padding: 0 20px;
+}
+
+/* Stylizacja sekcji O nas */
+.about-us {
+  margin: 40px 0;
+}
+
+.about-us h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.about-us p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Stylizacja sekcji Kontakt */
+.contact-info {
+  background-color: #f7f7f7;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid #ccc;
+}
+
+.contact-info h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+/* src/app/components/membership-list/membership-list.component.css */
+.membership-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.membership-container h2 {
+  margin-bottom: 20px;
+}
+
+.membership-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.membership-container li {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
