@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -7,11 +8,14 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'user-navbar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [ RouterModule],
   templateUrl: './user-navbar.component.html',
   styleUrl: './user-navbar.component.css'
 })
 export class UserNavbarComponent {
+
+  constructor(private authService: AuthService, private router: Router) {}
+
   menuValue: boolean = false;
     menu_icon: string = 'bi bi-list';
     openMenu() {
@@ -22,4 +26,9 @@ export class UserNavbarComponent {
       this.menuValue = false;
       this.menu_icon = 'bi bi-list';
     }
+
+    logout() {
+        this.authService.logout();
+        this.router.navigate(['/home']);
+      }
 }

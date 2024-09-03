@@ -10,6 +10,9 @@
             <strong>Trainer ID:</strong> {{ fitnessClass.personalTrainerId }}<br>
             <strong>Max Users:</strong> {{ fitnessClass.maxUsers }}
           </p>
+          <button class="btn btn-primary" (click)="enrollInClass(fitnessClass.id)">
+            Zapisz się
+          </button>
         </div>
         <div class="card-footer text-muted">
           Class ID: {{ fitnessClass.id }}

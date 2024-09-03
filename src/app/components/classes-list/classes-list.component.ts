@@ -20,4 +20,10 @@ export class ClassesListComponent {
         this.fitnessClasses = data;
       });
     }
+
+    enrollInClass(classId: number) {
+
+      console.log(`Zapisano na zajęcia o ID: ${classId}`);
+
+    }
 }
