@@ -1,1 +1,11 @@
-<p>personal-trainers works!</p>
+<!-- personal-trainer.component.html -->
+<div class="container">
+  <div *ngFor="let trainer of trainers" class="trainer-card">
+    <img [src]="'data:image/jpeg;base64,' + trainer.photo" alt="{{ trainer.name }}'s photo" class="trainer-photo">
+    <div class="trainer-info">
+      <h2>{{ trainer.name }} {{ trainer.surname }}</h2>
+      <p><strong>Phone:</strong> {{ trainer.phoneNumber }}</p>
+      <p><strong>Email:</strong> {{ trainer.email }}</p>
+    </div>
+  </div>
+</div>

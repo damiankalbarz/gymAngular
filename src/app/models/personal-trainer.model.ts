@@ -4,4 +4,5 @@ export interface PersonalTrainer {
   surname: string;
   phoneNumber: string;
   email: string;
+  photo: string;
 }
