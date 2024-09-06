@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Your Enrolled Fitness Classes</h2>
+
+  <div *ngIf="enrolledClasses && enrolledClasses.length > 0; else noClasses">
+    <ul class="list-group">
+      <li *ngFor="let fitnessClass of enrolledClasses" class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <h5>{{ fitnessClass.className }}</h5>
+          <p class="mb-1">
+            <strong>Day:</strong> {{ fitnessClass.dayOfWeek }}<br>
+            <strong>Time:</strong> {{ fitnessClass.startTime }} - {{ fitnessClass.endTime }}
+          </p>
+        </div>
+        <button class="btn btn-danger btn-sm" (click)="cancelEnrollment(fitnessClass.id)">Cancel Enrollment</button>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noClasses>
+    <div class="alert alert-info" role="alert">
+      You are not enrolled in any fitness classes yet.
+    </div>
+  </ng-template>
+</div>

@@ -30,7 +30,21 @@ export class FitnessClassService {
     return this.http.get<FitnessClass>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
   }
 
+ getEnrolledClassesForCurrentUser(): Observable<FitnessClass[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+    });
+    return this.http.get<FitnessClass[]>(`${this.apiUrl}/enrolled`, { headers });
+  }
+
+  cancelEnrollment(classId: number): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/${classId}/cancel-enrollment`, {}, { headers: this.getAuthHeaders() });
+  }
 
 
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError('Something went wrong; please try again later.');
+  }
 
 }

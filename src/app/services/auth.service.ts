@@ -39,7 +39,7 @@ export class AuthService {
 
   login(request: Login): Observable<Authentication> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',    
+      'Content-Type': 'application/json',
     });
 
     return this.http.post<Authentication>(`${this.API_URL}/authenticate`, request, { headers }).pipe(
@@ -69,6 +69,8 @@ export class AuthService {
   getRefreshToken(): string | null {
     return localStorage.getItem('refresh_token');
   }
+
+
 
   logout() {
     localStorage.removeItem('access_token');

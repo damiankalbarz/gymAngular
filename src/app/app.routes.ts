@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ClassesListComponent } from './components/classes-list/classes-list.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 import { PersonalTrainersComponent } from './components/personal-trainers/personal-trainers.component';
 
 
@@ -28,7 +29,8 @@ export const routes: Routes = [
     path: 'user',
     component: UserPageComponent,
     children: [
-       {path: '', redirectTo: 'classes', pathMatch: 'full'},
+       {path: '', redirectTo: 'account', pathMatch: 'full'},
+       {path: 'account', component: MyAccountComponent},
        {path: 'classes', component: ClassesListComponent},
     ],
   },
