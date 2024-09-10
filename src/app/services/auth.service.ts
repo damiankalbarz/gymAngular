@@ -24,9 +24,9 @@ interface Login {
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:8080/api/v1/auth';
+  private readonly API_URL = 'http://localhost:8080/api/v1/auth'; // Backend API URL
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   register(request: Register): Observable<Authentication> {
     return this.http.post<Authentication>(`${this.API_URL}/register`, request, {
@@ -38,10 +38,7 @@ export class AuthService {
   }
 
   login(request: Login): Observable<Authentication> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<Authentication>(`${this.API_URL}/authenticate`, request, { headers }).pipe(
       tap(response => this.handleAuthentication(response)),
       catchError(this.handleError)
@@ -70,8 +67,6 @@ export class AuthService {
     return localStorage.getItem('refresh_token');
   }
 
-
-
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
@@ -80,5 +75,13 @@ export class AuthService {
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
     return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
+
+  verifyGoogleToken(idToken: string): Observable<any> {
+    return this.http.post<any>(`${this.API_URL}/google-authenticate`, { id_token: idToken }, {
+      headers: { 'Content-Type': 'application/json' }
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 }
