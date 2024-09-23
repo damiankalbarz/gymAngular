@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FitnessClassService } from '../../services/fitness-class.service';
 import { FitnessClass } from '../../models/fitness-class.model';
+import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,18 +21,30 @@ export class MyAccountComponent {
   confirmPassword: string = '';
 
   userInfo: User = {
-    firstname: 'John',
-    lastname: 'Doe',
-    email: 'ala@ala.pl',
-    phoneNumber: '666777555',
+    firstname: '',
+    lastname: '',
+    email: '',
+    phoneNumber: '',
   };
 
 
-  constructor(private fitnessClassService: FitnessClassService) {}
+  constructor(private fitnessClassService: FitnessClassService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.getEnrolledClasses();
+    this.loadUserInfo();
   }
+
+  loadUserInfo() {
+     this.userService.getCurrentUser().subscribe(
+       (user) => {
+         this.userInfo = user;
+       },
+       (error) => {
+         console.error('Failed to load user info:', error);
+       }
+     );
+   }
 
   getEnrolledClasses(): void {
     this.fitnessClassService.getEnrolledClassesForCurrentUser().subscribe(
