@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class MyAccountComponent {
   enrolledClasses: FitnessClass[] = [];
+  editingField: string | null = null;
 
   currentPassword: string = '';
   newPassword: string = '';
@@ -46,6 +47,34 @@ export class MyAccountComponent {
      );
    }
 
+    // Enable editing for a specific field
+    editField(field: string) {
+      this.editingField = field;
+    }
+
+    saveField() {
+        const updatedData = {
+          firstname: this.userInfo.firstname,
+          lastname: this.userInfo.lastname,
+          phoneNumber: this.userInfo.phoneNumber,
+        };
+
+        this.userService.updateUser(updatedData).subscribe(
+          (updatedUser) => {
+            this.userInfo = updatedUser;
+            this.editingField = null; // Exit edit mode
+          },
+          (error) => {
+            console.error('Failed to update user:', error);
+          }
+        );
+      }
+
+      // Cancel editing
+      cancelEdit() {
+        this.editingField = null; // Exit edit mode
+      }
+
   getEnrolledClasses(): void {
     this.fitnessClassService.getEnrolledClassesForCurrentUser().subscribe(
       (classes) => {
@@ -67,22 +96,32 @@ export class MyAccountComponent {
       }
     );
   }
-  editField(field: keyof User) {
-      // Logic to handle editing of the user fields
-      console.log(`Editing ${field}`);
-      // Implement the editing logic here, such as opening a modal
-    }
 
-     changePassword() {
-        if (this.newPassword === this.confirmPassword) {
-          // Logic to change the password
-          console.log('Password changed successfully');
-          // Reset the fields
-          this.currentPassword = '';
-          this.newPassword = '';
-          this.confirmPassword = '';
+   changePassword() {
+    if (this.newPassword === this.confirmPassword) {
+          // Call the service to change the password
+          const passwordData = {
+            currentPassword: this.currentPassword,
+            newPassword: this.newPassword
+          };
+
+          this.userService.changePassword(passwordData).subscribe(
+            () => {
+              // Password changed successfully
+              console.log('Password changed successfully');
+
+              // Reset the fields
+              this.currentPassword = '';
+              this.newPassword = '';
+              this.confirmPassword = '';
+            },
+            (error) => {
+              // Handle error if password change fails
+              console.error('Failed to change password:', error);
+            }
+          );
         } else {
           console.error('Passwords do not match');
         }
-      }
+  }
 }

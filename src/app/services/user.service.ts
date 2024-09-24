@@ -26,11 +26,11 @@ export class UserService {
    }
 
    updateUser(userData: Partial<User>): Observable<User> {
-     return this.http.put<User>(`${this.apiUrl}/me`, userData);
+     return this.http.put<User>(`${this.apiUrl}/me`,  userData, { headers: this.getAuthHeaders() },);
    }
 
    changePassword(passwordData: { currentPassword: string, newPassword: string }): Observable<void> {
-     return this.http.patch<void>(`${this.apiUrl}`, passwordData);
+     return this.http.patch<void>(`${this.apiUrl}`, passwordData,  { headers: this.getAuthHeaders() });
    }
 
 }

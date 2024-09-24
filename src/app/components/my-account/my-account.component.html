@@ -23,32 +23,64 @@
   </ng-template>
 
   <h2 class="mt-5 mb-4">Your Information</h2>
+  <!-- src/app/components/my-account/my-account.component.html -->
   <div class="list-group">
+    <!-- First Name -->
     <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>First Name:</strong> {{ userInfo.firstname }}
-      </span>
-      <button class="btn btn-primary btn-sm" (click)="editField('firstname')">✏️ Edit</button>
+    <span>
+      <strong>First Name:</strong>
+      <span *ngIf="editingField !== 'firstname'">{{ userInfo.firstname }}</span>
+      <input *ngIf="editingField === 'firstname'" [(ngModel)]="userInfo.firstname" class="form-control" />
+    </span>
+      <div>
+        <button *ngIf="editingField !== 'firstname'" class="btn btn-primary btn-sm" (click)="editField('firstname')">✏️ Edit</button>
+        <div *ngIf="editingField === 'firstname'">
+          <button class="btn btn-success btn-sm" (click)="saveField()">💾 Save</button>
+          <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">✖️ Cancel</button>
+        </div>
+      </div>
     </div>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>Last Name:</strong> {{ userInfo.lastname }}
-      </span>
-      <button class="btn btn-primary btn-sm" (click)="editField('lastname')">✏️ Edit</button>
-    </div>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>Email:</strong> {{ userInfo.email }}
-      </span>
 
-    </div>
+    <!-- Last Name -->
     <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>Phone Number:</strong> {{ userInfo.phoneNumber }}
-      </span>
-      <button class="btn btn-primary btn-sm" (click)="editField('phoneNumber')">✏️ Edit</button>
+    <span>
+      <strong>Last Name:</strong>
+      <span *ngIf="editingField !== 'lastname'">{{ userInfo.lastname }}</span>
+      <input *ngIf="editingField === 'lastname'" [(ngModel)]="userInfo.lastname" class="form-control" />
+    </span>
+      <div>
+        <button *ngIf="editingField !== 'lastname'" class="btn btn-primary btn-sm" (click)="editField('lastname')">✏️ Edit</button>
+        <div *ngIf="editingField === 'lastname'">
+          <button class="btn btn-success btn-sm" (click)="saveField()">💾 Save</button>
+          <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">✖️ Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email (No Edit Option) -->
+    <div class="list-group-item d-flex justify-content-between align-items-center">
+    <span>
+      <strong>Email:</strong> {{ userInfo.email }}
+    </span>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="list-group-item d-flex justify-content-between align-items-center">
+    <span>
+      <strong>Phone Number:</strong>
+      <span *ngIf="editingField !== 'phoneNumber'">{{ userInfo.phoneNumber }}</span>
+      <input *ngIf="editingField === 'phoneNumber'" [(ngModel)]="userInfo.phoneNumber" class="form-control" />
+    </span>
+      <div>
+        <button *ngIf="editingField !== 'phoneNumber'" class="btn btn-primary btn-sm" (click)="editField('phoneNumber')">✏️ Edit</button>
+        <div *ngIf="editingField === 'phoneNumber'">
+          <button class="btn btn-success btn-sm" (click)="saveField()">💾 Save</button>
+          <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">✖️ Cancel</button>
+        </div>
+      </div>
     </div>
   </div>
+
 
   <h2 class="mt-5 mb-4">Change Password</h2>
   <form (ngSubmit)="changePassword()" #passwordForm="ngForm">
