@@ -1,0 +1,24 @@
+<div class="chat-container" [class.open]="isChatOpen">
+  <div class="chat-header" (click)="toggleChat()">
+    <span>Chat</span>
+    <button class="close-btn" (click)="closeChat($event)">X</button>
+  </div>
+
+  <div class="chat-content">
+    <div *ngFor="let msg of messages">
+      <div [ngClass]="{'admin-message': msg.sender === 'admin', 'user-message': msg.sender === 'user'}">
+        <strong>{{ msg.sender }}:</strong> {{ msg.content }}
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input [(ngModel)]="message" placeholder="Type a message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
+
+<div class="chat-icon" *ngIf="!isChatOpen" (click)="toggleChat()">
+  💬
+</div>
+
