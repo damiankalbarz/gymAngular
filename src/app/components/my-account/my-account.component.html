@@ -21,49 +21,4 @@
       You are not enrolled in any fitness classes yet.
     </div>
   </ng-template>
-
-  <h2 class="mt-5 mb-4">Your Information</h2>
-  <div class="list-group">
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>First Name:</strong> {{ userInfo.firstname }}
-      </span>
-      <button class="btn btn-primary btn-sm" (click)="editField('firstname')">✏️ Edit</button>
-    </div>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>Last Name:</strong> {{ userInfo.lastname }}
-      </span>
-      <button class="btn btn-primary btn-sm" (click)="editField('lastname')">✏️ Edit</button>
-    </div>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>Email:</strong> {{ userInfo.email }}
-      </span>
-
-    </div>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>
-        <strong>Phone Number:</strong> {{ userInfo.phoneNumber }}
-      </span>
-      <button class="btn btn-primary btn-sm" (click)="editField('phoneNumber')">✏️ Edit</button>
-    </div>
-  </div>
-
-  <h2 class="mt-5 mb-4">Change Password</h2>
-  <form (ngSubmit)="changePassword()" #passwordForm="ngForm">
-    <div class="form-group">
-      <label for="currentPassword">Current Password</label>
-      <input type="password" id="currentPassword" class="form-control" required [(ngModel)]="currentPassword" name="currentPassword">
-    </div>
-    <div class="form-group">
-      <label for="newPassword">New Password</label>
-      <input type="password" id="newPassword" class="form-control" required [(ngModel)]="newPassword" name="newPassword">
-    </div>
-    <div class="form-group">
-      <label for="confirmPassword">Confirm New Password</label>
-      <input type="password" id="confirmPassword" class="form-control" required [(ngModel)]="confirmPassword" name="confirmPassword">
-    </div>
-    <button type="submit" class="btn btn-success mt-3">Change Password</button>
-  </form>
 </div>

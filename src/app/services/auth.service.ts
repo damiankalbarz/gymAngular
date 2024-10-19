@@ -78,7 +78,7 @@ export class AuthService {
   }
 
   verifyGoogleToken(idToken: string): Observable<any> {
-    return this.http.post<any>(`${this.API_URL}/google-authenticate`, { idToken: idToken }, {
+    return this.http.post<any>(`${this.API_URL}/google-authenticate`, { id_token: idToken }, {
       headers: { 'Content-Type': 'application/json' }
     }).pipe(
       catchError(this.handleError)
