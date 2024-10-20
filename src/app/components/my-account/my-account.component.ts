@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { FitnessClassService } from '../../services/fitness-class.service';
 import { FitnessClass } from '../../models/fitness-class.model';
+
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
+
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-my-account',
   standalone: true,
-  imports: [CommonModule,  FormsModule,],
+  imports: [CommonModule],
   templateUrl: './my-account.component.html',
   styleUrl: './my-account.component.css'
 })
 export class MyAccountComponent {
   enrolledClasses: FitnessClass[] = [];
   editingField: string | null = null;
+
 
   currentPassword: string = '';
   newPassword: string = '';
@@ -30,6 +32,7 @@ export class MyAccountComponent {
 
 
   constructor(private fitnessClassService: FitnessClassService, private userService: UserService) {}
+
 
   ngOnInit(): void {
     this.getEnrolledClasses();
@@ -97,6 +100,7 @@ export class MyAccountComponent {
     );
   }
 
+
    changePassword() {
     if (this.newPassword === this.confirmPassword) {
           // Call the service to change the password
@@ -124,4 +128,5 @@ export class MyAccountComponent {
           console.error('Passwords do not match');
         }
   }
+
 }
