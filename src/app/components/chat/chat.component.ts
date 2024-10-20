@@ -1,36 +1,36 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common'
+import { ChatService } from '../../services/chat.service';
+import { AuthService } from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
 export class ChatComponent {
-  messages: any[] = [];
-  message: string = '';
-  isAdminOrManager: boolean = false;  // Zmienna do sprawdzania, czy użytkownik jest adminem lub managerem
+  isChatOpen = false;
+  message = '';
+  messages: { sender: string, content: string }[] = [];
 
-  constructor(private chatService: ChatService, private authService: AuthService) { }
+  toggleChat() {
+    this.isChatOpen = !this.isChatOpen;
+  }
 
-  ngOnInit() {
-    this.chatService.connect();
-    this.chatService.getMessageSubject().subscribe((message: any) => {
-      this.messages.push(message);
-    });
-
-    // Sprawdź, czy użytkownik ma rolę administratora lub managera
-    this.isAdminOrManager = this.authService.hasRole('ADMIN') || this.authService.hasRole('MANAGER');
+  closeChat(event: MouseEvent) {
+    event.stopPropagation();
+    this.isChatOpen = false;
   }
 
   sendMessage() {
-    this.chatService.sendMessage(this.message);
-    this.message = '';
-  }
-
-  adminReply() {
-    this.chatService.adminReply(this.message);
-    this.message = '';
+    if (this.message.trim()) {
+      this.messages.push({ sender: 'user', content: this.message });
+      this.message = '';
+      // Można tutaj dodać logikę wysyłania wiadomości do serwera
+    }
   }
 }

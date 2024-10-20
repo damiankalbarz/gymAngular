@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SocialAuthService, GoogleLoginProvider } from '@abacritt/angularx-social-login';
@@ -8,7 +9,7 @@ import { SocialAuthService, GoogleLoginProvider } from '@abacritt/angularx-socia
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
