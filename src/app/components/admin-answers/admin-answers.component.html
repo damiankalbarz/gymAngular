@@ -1,0 +1,28 @@
+<div class="admin-chat-container">
+  <!-- Lista rozmów -->
+  <div class="conversation-list">
+    <h3>Lista rozmów</h3>
+    <ul>
+      <!-- Rozmowy pojawiają się, gdy zostaną utworzone przez użytkowników -->
+      <li *ngFor="let conversation of conversations" (click)="selectConversation(conversation)">
+        {{ conversation.name }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Okno wiadomości -->
+  <div class="chat-window" *ngIf="selectedConversation">
+    <h3>Rozmowa z {{ selectedConversation.name }}</h3>
+    <div class="messages">
+      <div *ngFor="let message of selectedConversation.messages">
+        <p><strong>{{ message.sender }}:</strong> {{ message.content }}</p>
+      </div>
+    </div>
+
+    <!-- Pole do odpowiedzi -->
+    <div class="reply">
+      <textarea [(ngModel)]="newAdminMessage" placeholder="Napisz odpowiedź..."></textarea>
+      <button (click)="sendAdminReply()">Wyślij</button>
+    </div>
+  </div>
+</div>

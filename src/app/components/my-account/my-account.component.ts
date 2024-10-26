@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FitnessClassService } from '../../services/fitness-class.service';
 import { FitnessClass } from '../../models/fitness-class.model';
+import { FormsModule } from '@angular/forms';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-my-account',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './my-account.component.html',
   styleUrl: './my-account.component.css'
 })

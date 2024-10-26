@@ -17,6 +17,15 @@ export class ChatComponent {
   message = '';
   messages: { sender: string, content: string }[] = [];
 
+  constructor(private chatService: ChatService, private authService: AuthService) {
+    // Subskrybuj wiadomości z serwera i dodaj je tylko wtedy, gdy nie są duplikatami
+    this.chatService.getMessageSubject().subscribe((msg: any) => {
+      if (msg.sender !== 'user') { // Filtruj wiadomości od użytkownika
+        this.messages.push({ sender: msg.sender, content: msg.content });
+      }
+    });
+  }
+
   toggleChat() {
     this.isChatOpen = !this.isChatOpen;
   }
@@ -28,9 +37,9 @@ export class ChatComponent {
 
   sendMessage() {
     if (this.message.trim()) {
+      this.chatService.sendMessage(this.message); // Wyślij wiadomość do serwera
       this.messages.push({ sender: 'user', content: this.message });
       this.message = '';
-      // Można tutaj dodać logikę wysyłania wiadomości do serwera
     }
   }
 }
