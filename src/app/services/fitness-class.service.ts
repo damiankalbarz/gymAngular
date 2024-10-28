@@ -41,6 +41,14 @@ export class FitnessClassService {
     return this.http.post<void>(`${this.apiUrl}/${classId}/cancel-enrollment`, {}, { headers: this.getAuthHeaders() });
   }
 
+  enrollInClass(classId: number): Observable<FitnessClass> {
+    return this.http.post<FitnessClass>(`${this.apiUrl}/${classId}/enroll`, {}, { headers: this.getAuthHeaders() })
+      .pipe(
+        tap(() => console.log(`Enrolled in class with id=${classId}`)),
+        catchError(this.handleError)
+      );
+  }
+
 
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);

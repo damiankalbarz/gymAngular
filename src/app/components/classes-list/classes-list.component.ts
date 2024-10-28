@@ -22,8 +22,13 @@ export class ClassesListComponent {
     }
 
     enrollInClass(classId: number) {
-
-      console.log(`Zapisano na zajęcia o ID: ${classId}`);
-
-    }
+      this.fitnessClassService.enrollInClass(classId).subscribe({
+          next: (response) => {
+            console.log(`Pomyślnie zapisano na zajęcia o ID: ${classId}`, response);
+          },
+          error: (error) => {
+            console.error(`Nie udało się zapisać na zajęcia o ID: ${classId}`, error);
+          }
+        });
+      }
 }
