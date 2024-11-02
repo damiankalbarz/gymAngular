@@ -25,6 +25,7 @@
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
     "gapi-script": "^1.2.0",
+    "ng-recaptcha": "^13.2.1",
     "rxjs": "~7.8.0",
     "sockjs-client": "^1.6.1",
     "stompjs": "^2.3.3",

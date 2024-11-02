@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common'
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SocialAuthService, GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule,CommonModule],
+  imports: [FormsModule, RouterModule,CommonModule, RecaptchaModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -19,6 +20,8 @@ export class LoginComponent {
     password: ''
   };
   loading = false;
+  captchaToken: string | null = null;
+
 
   constructor( private socialAuthService: SocialAuthService,private authService: AuthService, private router: Router) { }
 
@@ -27,6 +30,11 @@ export class LoginComponent {
     }
 
   onSubmit() {
+    if (!this.captchaToken) {
+      console.error('Captcha not completed');
+      return;
+    }
+
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
         console.log('Login successful', response);
@@ -37,6 +45,10 @@ export class LoginComponent {
       }
     });
   }
+
+   onCaptchaResolved(token: string) {
+      this.captchaToken = token;
+   }
 
   renderGoogleButton() {
       window.google.accounts.id.initialize({
