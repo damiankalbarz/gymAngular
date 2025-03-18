@@ -1,21 +1,22 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input [(ngModel)]="loginData.email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<div class="container-wrapper">
+  <div class="login-container">
+    <h2>Zaloguj się</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input [(ngModel)]="loginData.email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Nigdy nie udostępnimy Twojego e-maila.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Hasło</label>
+        <input [(ngModel)]="loginData.password" name="password" type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3 text-center">
+        <re-captcha (resolved)="onCaptchaResolved($event || '')" siteKey="6Lf4jM8ZAAAAAG79PugBv4JHNYAk1wxVmI56gKuc"></re-captcha>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!captchaToken">Zaloguj się</button>
+    </form>
+    <br>
+    <div id="googleSignInDiv" class="text-center"></div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input [(ngModel)]="loginData.password" name="password" type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-
-
-  <re-captcha (resolved)="onCaptchaResolved($event || '')" siteKey="6Lf4jM8ZAAAAAG79PugBv4JHNYAk1wxVmI56gKuc"></re-captcha>
-
-  <button type="submit" class="btn btn-primary" [disabled]="!captchaToken">Submit</button>
-  <br>
-
-</form>
-<div id="googleSignInDiv"></div>
-
-
+</div>

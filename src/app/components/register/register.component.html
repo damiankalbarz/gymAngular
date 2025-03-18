@@ -1,24 +1,25 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="mb-3">
-    <label for="firstname" class="form-label">First Name</label>
-    <input type="text" class="form-control" id="firstname" [(ngModel)]="registerData.firstname" name="firstname" required>
+<div class="container-wrapper">
+  <div class="form-container">
+    <h2>Zarejestruj się</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="firstname" class="form-label">Imie</label>
+        <input type="text" class="form-control" id="firstname" [(ngModel)]="registerData.firstname" name="firstname" required>
+      </div>
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Nazwisko</label>
+        <input type="text" class="form-control" id="lastname" [(ngModel)]="registerData.lastname" name="lastname" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="registerData.email" name="email" required>
+        <div id="emailHelp" class="form-text">Nigdy nie udostępnimy Twojego e-maila.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Hasło</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="registerData.password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+    </form>
   </div>
-
-  <div class="mb-3">
-    <label for="lastname" class="form-label">Last Name</label>
-    <input type="text" class="form-control" id="lastname" [(ngModel)]="registerData.lastname" name="lastname" required>
-  </div>
-
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="registerData.email" name="email" required>
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="registerData.password" name="password" required>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

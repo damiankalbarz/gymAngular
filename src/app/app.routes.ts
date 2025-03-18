@@ -20,7 +20,7 @@ export const routes: Routes = [
     component: HomePageComponent,
     children: [
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: 'welcome', component: AdminAnswersComponent },
+      { path: 'welcome', component: WelcomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'trainers', component: PersonalTrainersComponent },
