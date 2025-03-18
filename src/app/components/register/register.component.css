@@ -15,7 +15,7 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #8c9a99;
+  background-image: url('../../../assets/gym.jpg');
 }
   .form-container {
     max-width: 400px;

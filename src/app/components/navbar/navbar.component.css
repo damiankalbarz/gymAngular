@@ -1,10 +1,12 @@
 header {
   padding: 10px;
-  background: #02534d;
+  background: #03186d;
 }
 
 .logo {
-  width: 90px;
+  width: 250px;
+  font-size: 40px;
+  color: white;
 }
 
   .logo:hover {

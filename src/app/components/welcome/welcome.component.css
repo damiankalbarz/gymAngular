@@ -1,63 +1,122 @@
-/* src/app/app.component.css */
-.app-container {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  margin-top: 50px;
-  padding: 0 20px;
-}
-
-/* Stylizacja sekcji O nas */
-.about-us {
-  margin: 40px 0;
-}
-
-.about-us h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-.about-us p {
-  font-size: 1.2em;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Stylizacja sekcji Kontakt */
-.contact-info {
-  background-color: #f7f7f7;
-  padding: 20px;
-  margin-top: 40px;
-  border-top: 1px solid #ccc;
-}
-
-.contact-info h2 {
-  font-size: 1.8em;
-  margin-bottom: 15px;
-}
-
-.contact-info p {
-  font-size: 1.1em;
-  margin: 5px 0;
-}
-/* src/app/components/membership-list/membership-list.component.css */
-.membership-container {
-  text-align: center;
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.membership-container h2 {
-  margin-bottom: 20px;
-}
-
-.membership-container ul {
-  list-style-type: none;
+/* Globalne style */
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.membership-container li {
-  margin: 10px 0;
-  font-size: 1.2em;
+
+
+.app-container {
+  font-family: 'Arial', sans-serif;
+  background-image: url('../../../assets/gym.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app-container2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Nagłówek */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1e3d58;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+
+/* Sekcja O nas */
+.about-us {
+  background-color: rgba(227, 242, 253, 0.9);
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+  .about-us h2 {
+    font-size: 2rem;
+    color: #1e3d58;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .about-us p {
+    font-size: 1rem;
+    color: #555;
+    text-align: justify;
+  }
+
+/* Sekcja Cennik karnetów */
+.membership-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+  .membership-container h2 {
+    font-size: 2rem;
+    color: #1e3d58;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .membership-container ul {
+    list-style: none;
+  }
+
+  .membership-container li {
+    font-size: 1.2rem;
+    padding: 10px;
+    background-color: rgba(241, 248, 233, 0.9);
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+    .membership-container li:hover {
+      background-color: rgba(200, 230, 201, 0.9);
+      cursor: pointer;
+    }
+
+  .membership-container strong {
+    font-weight: bold;
+    color: #388e3c;
+  }
+
+/* Responsywność */
+@media screen and (max-width: 768px) {
+  .app-container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .about-us h2,
+  .membership-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .membership-container li {
+    font-size: 1rem;
+  }
 }
