@@ -11,7 +11,7 @@ import { PersonalTrainer } from '../models/personal-trainer.model';
   providedIn: 'root'
 })
 export class PersonalTrainerService {
-   private apiUrl = '/api/v1/personal-trainer';
+   private apiUrl = '/api/v1/personal-trainers';
 
 
   constructor(private http: HttpClient) { }

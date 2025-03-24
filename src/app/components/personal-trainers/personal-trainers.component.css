@@ -1,36 +1,124 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+/* Globalne style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
+/* Kontener trenerów z TŁEM */
+.trainers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: url('../../../assets/gym.jpg') no-repeat center center/cover;
+  position: relative;
+}
+
+  /* Półprzezroczysty overlay na tle */
+  .trainers-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Przyciemnienie tła */
+    z-index: 1;
+  }
+
+  /* Nagłówek */
+  .trainers-container h1 {
+    font-size: 3rem;
+    color: #0b57e3;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+/* Styl kart trenerów */
 .trainer-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 15px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  background: rgba(255, 255, 255, 0.85); /* Półprzezroczyste tło */
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  width: 90%;
   max-width: 800px;
-  background-color: #fff;
-  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
+  z-index: 2;
 }
 
+  /* Efekt hovera */
+  .trainer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  }
+
+/* Zdjęcie trenera */
 .trainer-photo {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   object-fit: cover;
   border-radius: 50%;
-  margin-right: 20px;
+  border: 4px solid #1e3d58;
+  margin-right: 25px;
 }
 
+/* Informacje o trenerze */
 .trainer-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: calc(100% - 170px);
+  text-align: left;
+}
+
+  .trainer-info h2 {
+    font-size: 2rem;
+    color: #1e3d58;
+    margin-bottom: 10px;
+  }
+
+  .trainer-info p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+  }
+
+    /* Ikony */
+    .trainer-info p i {
+      margin-right: 12px;
+      color: #1e3d58;
+    }
+
+/* Responsywność */
+@media screen and (max-width: 768px) {
+  .trainer-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .trainer-photo {
+    margin-bottom: 20px;
+    margin-right: 0;
+    width: 150px;
+    height: 150px;
+  }
+
+  .trainer-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .trainer-info p {
+    font-size: 1rem;
+  }
 }
